@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/notnil/chess"
-	"github.com/notnil/chess/uci"
+	"github.com/psykhi/chess"
+	"github.com/psykhi/chess/uci"
 )
 
 var StockfishPath string

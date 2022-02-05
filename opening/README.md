@@ -1,6 +1,6 @@
 # opening
 
-**opening** provides interactivity to opening books such as [Encyclopaedia of Chess Openings](https://en.wikipedia.org/wiki/Encyclopaedia_of_Chess_Openings) (ECO) which is loadable from the package.  
+**opening** provides interactivity to opening books such as [Encyclopaedia of Chess Openings](https://en.wikipedia.org/wiki/Encyclopaedia_of_Chess_Openings) (ECO) which is loadable from the package.
 
 ## Visual
 
@@ -10,14 +10,14 @@ Advance Variation subtree of the French Defense:
 
 ## Example
 
-```go   
+```go
 package main
 
 import (
     "fmt"
 
-    "github.com/notnil/chess"
-    "github.com/notnil/chess/opening"
+    "github.com/psykhi/chess"
+    "github.com/psykhi/chess/opening"
 )
 
 func main(){

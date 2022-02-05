@@ -1,36 +1,36 @@
 # chess
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/notnil/chess)
-[![Coverage Status](https://coveralls.io/repos/notnil/chess/badge.svg?branch=master&service=github)](https://coveralls.io/github/notnil/chess?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/notnil/chess)](https://goreportcard.com/report/notnil/chess)
-[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/notnil/chess/master/LICENSE)
+
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://godoc.org/github.com/psykhi/chess)
+[![Coverage Status](https://coveralls.io/repos/psykhi/chess/badge.svg?branch=master&service=github)](https://coveralls.io/github/psykhi/chess?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/psykhi/chess)](https://goreportcard.com/report/psykhi/chess)
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/psykhi/chess/master/LICENSE)
 
 ## Introduction
 
-**chess** is a set of go packages which provide common chess utilities such as move generation, turn management, checkmate detection, PGN encoding, UCI interoperability, image generation, opening book exploration, and others.  It is well tested and optimized for performance.   
+**chess** is a set of go packages which provide common chess utilities such as move generation, turn management, checkmate detection, PGN encoding, UCI interoperability, image generation, opening book exploration, and others. It is well tested and optimized for performance.
 
-![rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1](example.png)    
-
+![rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR b KQkq - 0 1](example.png)
 
 ## Repo Structure
 
-| Package | Docs Link | Description |
-| ------------- | ------------- | ------------- |
-| **chess**  | [notnil/chess](README.md)  | Move generation, serialization / deserialization, turn management, checkmate detection  |
-| **image**  | [notnil/chess/image](image/README.md)  | SVG chess board image generation  |
-| **opening**  | [notnil/chess/opening](opening/README.md)  | Opening book interactivity  |
-| **uci**  | [notnil/chess/uci](uci/README.md)  | Universal Chess Interface client  |
+| Package     | Docs Link                                 | Description                                                                            |
+| ----------- | ----------------------------------------- | -------------------------------------------------------------------------------------- |
+| **chess**   | [psykhi/chess](README.md)                 | Move generation, serialization / deserialization, turn management, checkmate detection |
+| **image**   | [psykhi/chess/image](image/README.md)     | SVG chess board image generation                                                       |
+| **opening** | [psykhi/chess/opening](opening/README.md) | Opening book interactivity                                                             |
+| **uci**     | [psykhi/chess/uci](uci/README.md)         | Universal Chess Interface client                                                       |
 
 ## Installation
 
 **chess** can be installed using "go get".
 
 ```bash
-go get -u github.com/notnil/chess
-``` 
+go get -u github.com/psykhi/chess
+```
 
 ## Usage
 
-### Example Random Game 
+### Example Random Game
 
 ```go
 package main
@@ -39,7 +39,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/notnil/chess"
+	"github.com/psykhi/chess"
 )
 
 func main() {
@@ -76,6 +76,7 @@ func main() {
 ```
 
 ### Example Stockfish v. Stockfish
+
 ```go
 package main
 
@@ -83,8 +84,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/notnil/chess"
-	"github.com/notnil/chess/uci"
+	"github.com/psykhi/chess"
+	"github.com/psykhi/chess/uci"
 )
 
 func main() {
@@ -112,14 +113,14 @@ func main() {
 		}
 	}
 	fmt.Println(game.String())
-	// Output: 
+	// Output:
 	// 1.c4 c5 2.Nf3 e6 3.Nc3 Nc6 4.d4 cxd4 5.Nxd4 Nf6 6.a3 d5 7.cxd5 exd5 8.Bf4 Bc5 9.Ndb5 O-O 10.Nc7 d4 11.Na4 Be7 12.Nxa8 Bf5 13.g3 Qd5 14.f3 Rxa8 15.Bg2 Rd8 16.b4 Qe6 17.Nc5 Bxc5 18.bxc5 Nd5 19.O-O Nc3 20.Qd2 Nxe2+ 21.Kh1 d3 22.Bd6 Qd7 23.Rab1 h6 24.a4 Re8 25.g4 Bg6 26.a5 Ncd4 27.Qb4 Qe6 28.Qxb7 Nc2 29.Qxa7 Ne3 30.Rb8 Nxf1 31.Qb6 d2 32.Rxe8+ Qxe8 33.Qb3 Ne3 34.h3 Bc2 35.Qxc2 Nxc2 36.Kh2 d1=Q 37.h4 Qg1+ 38.Kh3 Ne1 39.h5 Qxg2+ 40.Kh4 Nxf3#  0-1
 }
 ```
 
 ### Movement
 
-Chess exposes two ways of moving: valid move generation and notation parsing.  Valid moves are calculated from the current position and are returned from the ValidMoves method.  Even if the client isn't a go program (e.g. a web app) the list of moves can be serialized into their string representation and supplied to the client.  Once a move is selected the MoveStr method can be used to parse the selected move's string.  
+Chess exposes two ways of moving: valid move generation and notation parsing. Valid moves are calculated from the current position and are returned from the ValidMoves method. Even if the client isn't a go program (e.g. a web app) the list of moves can be serialized into their string representation and supplied to the client. Once a move is selected the MoveStr method can be used to parse the selected move's string.
 
 #### Valid Moves
 
@@ -145,11 +146,11 @@ if err := game.MoveStr("e4"); err != nil {
 
 ### Outcome
 
-The outcome of the match is calculated automatically from the inputted moves if possible.  Draw agreements, resignations, and other human initiated outcomes can be inputted as well.  
+The outcome of the match is calculated automatically from the inputted moves if possible. Draw agreements, resignations, and other human initiated outcomes can be inputted as well.
 
 #### Checkmate
 
-Black wins by checkmate (Fool's Mate):   
+Black wins by checkmate (Fool's Mate):
 
 ```go
 game := chess.NewGame()
@@ -170,7 +171,7 @@ fmt.Println(game.Method()) // Checkmate
 2♙ ♙ ♙ ♙ ♙ - - ♙
 1♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
 */
-``` 
+```
 
 #### Stalemate
 
@@ -221,7 +222,7 @@ fmt.Println(game.Method())  // DrawOffer
 
 #### Threefold Repetition
 
-[Threefold repetition](https://en.wikipedia.org/wiki/Threefold_repetition) occurs when the position repeats three times (not necessarily in a row).  If this occurs both players have the option of taking a draw, but aren't required until Fivefold Repetition.
+[Threefold repetition](https://en.wikipedia.org/wiki/Threefold_repetition) occurs when the position repeats three times (not necessarily in a row). If this occurs both players have the option of taking a draw, but aren't required until Fivefold Repetition.
 
 ```go
 game := chess.NewGame()
@@ -234,7 +235,7 @@ fmt.Println(game.EligibleDraws()) //  [DrawOffer ThreefoldRepetition]
 
 #### Fivefold Repetition
 
-According to the [FIDE Laws of Chess](http://www.fide.com/component/handbook/?id=171&view=article) if a position repeats five times then the game is drawn automatically.  
+According to the [FIDE Laws of Chess](http://www.fide.com/component/handbook/?id=171&view=article) if a position repeats five times then the game is drawn automatically.
 
 ```go
 game := chess.NewGame()
@@ -253,7 +254,7 @@ fmt.Println(game.Method()) // FivefoldRepetition
 
 #### Fifty Move Rule
 
-[Fifty-move rule](https://en.wikipedia.org/wiki/Fifty-move_rule) allows either player to claim a draw if no capture has been made and no pawn has been moved in the last fifty moves.  
+[Fifty-move rule](https://en.wikipedia.org/wiki/Fifty-move_rule) allows either player to claim a draw if no capture has been made and no pawn has been moved in the last fifty moves.
 
 ```go
 fen, _ := chess.FEN("2r3k1/1q1nbppp/r3p3/3pP3/pPpP4/P1Q2N2/2RN1PPP/2R4K b - b3 100 23")
@@ -273,7 +274,7 @@ game := chess.NewGame(fen)
 game.MoveStr("Kf8")
 fmt.Println(game.Outcome()) // 1/2-1/2
 fmt.Println(game.Method()) // SeventyFiveMoveRule
-```  
+```
 
 #### Insufficient Material
 
@@ -288,7 +289,7 @@ fmt.Println(game.Method()) // InsufficientMaterial
 
 ### PGN
 
-[PGN](https://en.wikipedia.org/wiki/Portable_Game_Notation), or Portable Game Notation, is the most common serialization format for chess matches.  PGNs include move history and metadata about the match.  Chess includes the ability to read and write the PGN format.  
+[PGN](https://en.wikipedia.org/wiki/Portable_Game_Notation), or Portable Game Notation, is the most common serialization format for chess matches. PGNs include move history and metadata about the match. Chess includes the ability to read and write the PGN format.
 
 #### Example PGN
 
@@ -313,7 +314,7 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2
 
 #### Read PGN
 
-PGN supplied as an optional parameter to the NewGame constructor:  
+PGN supplied as an optional parameter to the NewGame constructor:
 
 ```go
 pgn, err := chess.PGN(pgnReader)
@@ -361,7 +362,7 @@ for scanner.Scan() {
 
 ### FEN
 
-[FEN](https://en.wikipedia.org/wiki/Forsyth–Edwards_Notation), or Forsyth–Edwards Notation, is the standard notation for describing a board position.  FENs include piece positions, turn, castle rights, en passant square, half move counter (for [50 move rule](https://en.wikipedia.org/wiki/Fifty-move_rule)), and full move counter. 
+[FEN](https://en.wikipedia.org/wiki/Forsyth–Edwards_Notation), or Forsyth–Edwards Notation, is the standard notation for describing a board position. FENs include piece positions, turn, castle rights, en passant square, half move counter (for [50 move rule](https://en.wikipedia.org/wiki/Fifty-move_rule)), and full move counter.
 
 #### Read FEN
 
@@ -387,10 +388,11 @@ fmt.Println(pos.String()) // rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq 
 
 ### Notations
 
-[Chess Notation](https://en.wikipedia.org/wiki/Chess_notation) define how moves are encoded in a serialized format.  Chess uses a notation when converting to and from PGN and for accepting move text.    
+[Chess Notation](https://en.wikipedia.org/wiki/Chess_notation) define how moves are encoded in a serialized format. Chess uses a notation when converting to and from PGN and for accepting move text.
+
 #### Algebraic Notation
 
-[Algebraic Notation](https://en.wikipedia.org/wiki/Algebraic_notation_(chess)) (or Standard Algebraic Notation) is the official chess notation used by FIDE. Examples: e2, e5, O-O (short castling), e8=Q (promotion)
+[Algebraic Notation](<https://en.wikipedia.org/wiki/Algebraic_notation_(chess)>) (or Standard Algebraic Notation) is the official chess notation used by FIDE. Examples: e2, e5, O-O (short castling), e8=Q (promotion)
 
 ```go
 game := chess.NewGame(chess.UseNotation(chess.AlgebraicNotation{}))
@@ -401,7 +403,7 @@ fmt.Println(game) // 1.e4 e5  *
 
 #### Long Algebraic Notation
 
-[Long Algebraic Notation](https://https://en.wikipedia.org/wiki/Algebraic_notation_(chess)#Long_algebraic_notation) LongAlgebraicNotation is a more beginner friendly alternative to algebraic notation, where the origin of the piece is visible as well as the destination. Examples: Rd1xd8+, Ng8f6.
+[Long Algebraic Notation](<https://https://en.wikipedia.org/wiki/Algebraic_notation_(chess)#Long_algebraic_notation>) LongAlgebraicNotation is a more beginner friendly alternative to algebraic notation, where the origin of the piece is visible as well as the destination. Examples: Rd1xd8+, Ng8f6.
 
 ```go
 game := chess.NewGame(chess.UseNotation(chess.LongAlgebraicNotation{}))
@@ -425,7 +427,7 @@ fmt.Println(game) // 1.e2e4 e7e5  *
 
 #### Text Representation
 
-Board's Draw() method can be used to visualize a position using unicode chess symbols.  
+Board's Draw() method can be used to visualize a position using unicode chess symbols.
 
 ```go
 game := chess.NewGame()
@@ -445,16 +447,18 @@ fmt.Println(game.Position().Board().Draw())
 
 ## Performance
 
-Chess has been performance tuned, using [pprof](https://golang.org/pkg/runtime/pprof/), with the goal of being fast enough for use by chess bots.  The original map based board representation was replaced by [bitboards](https://chessprogramming.wikispaces.com/Bitboards) resulting in a large performance increase.
+Chess has been performance tuned, using [pprof](https://golang.org/pkg/runtime/pprof/), with the goal of being fast enough for use by chess bots. The original map based board representation was replaced by [bitboards](https://chessprogramming.wikispaces.com/Bitboards) resulting in a large performance increase.
 
-### Benchmarks  
+### Benchmarks
 
 The benchmarks can be run with the following command:
+
 ```
 go test -bench=.
 ```
 
 Results from the baseline 2015 MBP:
+
 ```
 BenchmarkBitboardReverse-4              2000000000               1.01 ns/op
 BenchmarkStalemateStatus-4                500000              3116 ns/op
