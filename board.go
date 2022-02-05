@@ -46,6 +46,30 @@ func NewBoard(m map[Square]Piece) *Board {
 	return b
 }
 
+func (b *Board) Equal(bb *Board) bool {
+	return b.bbWhiteKnight == bb.bbWhiteKnight &&
+		b.bbBlackKnight == bb.bbBlackKnight &&
+		b.bbWhiteQueen == bb.bbWhiteQueen &&
+		b.bbBlackQueen == bb.bbBlackQueen &&
+		b.bbBlackBishop == bb.bbBlackBishop &&
+		b.bbWhiteBishop == bb.bbWhiteBishop &&
+
+		b.bbBlackPawn == bb.bbBlackPawn &&
+		b.bbWhitePawn == bb.bbWhitePawn &&
+
+		b.bbWhiteKing == bb.bbWhiteKing &&
+		b.bbBlackKing == bb.bbBlackKing &&
+
+		b.bbWhiteRook == bb.bbWhiteRook &&
+		b.bbBlackRook == bb.bbBlackRook &&
+
+		b.whiteSqs == bb.whiteSqs &&
+		b.blackSqs == bb.blackSqs &&
+		b.emptySqs == bb.emptySqs &&
+		b.blackKingSq == bb.blackKingSq &&
+		b.whiteKingSq == bb.whiteKingSq
+}
+
 // SquareMap returns a mapping of squares to pieces.  A square is only added to the map if it is occupied.
 func (b *Board) SquareMap() map[Square]Piece {
 	m := map[Square]Piece{}
